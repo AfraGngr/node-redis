@@ -1,0 +1,10 @@
+1. Resons to Store as HASH
+    -> Record has many attributes
+    -> The records has to be sorted many different ways
+    -> Often need to access a single record at a time
+
+2. When DO NOT HASH
+    -> The record is only for counting or enforcing uniqueness
+    -> Records only one or two attributes
+    -> Used only for creating relations between different records
+    -> The record is only used for time series data
