@@ -6,5 +6,5 @@ interface QueryOpts {
 }
 
 export const itemsByUser = async (userId: string, opts: QueryOpts) => {
-	return { items: '', totalPages: 1 }
+	return { items: '', totalPages: 1 };
 };
