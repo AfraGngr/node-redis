@@ -13,11 +13,11 @@ const client = createClient({
 			SCRIPT: `
 				return redis.call('SET', KEYS[1], 1 + tonumber(ARGV[1]))
 			`,
-			transformArguments(key: string, value: number){
-				return [key, value.toString()]
+			transformArguments(key: string, value: number) {
+				return [key, value.toString()];
 			},
 			transformReply(reply: any) {
-				return reply 
+				return reply;
 			}
 		}),
 		incrementView: defineScript({
@@ -36,19 +36,12 @@ const client = createClient({
 					redis.call('ZINCRBY', itemsByViewsKey, 1, itemId)
 				end
 			`,
-			transformArguments(itemId: string, userId: string){
-				return [
-					itemsViewsKey(itemId),
-					itemsKey(itemId),
-					itemsByViewKey(),
-					itemId,
-					userId
-				]
+			transformArguments(itemId: string, userId: string) {
+				return [itemsViewsKey(itemId), itemsKey(itemId), itemsByViewKey(), itemId, userId];
 
 				// EVALSHA ID 3 ... the keys and arg will be here
 			},
 			transformReply() {}
-
 		})
 	}
 });

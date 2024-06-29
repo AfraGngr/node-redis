@@ -31,18 +31,18 @@ export const createItem = async (attrs: CreateItemAttrs, userId: string) => {
 	const id = genId();
 
 	const serialized = serialize(attrs);
-    
-    // pipelining
+
+	// pipelining
 	await Promise.all([
 		client.hSet(itemsKey(id), serialized),
 		client.zAdd(itemsByViewKey(), {
 			value: id,
 			score: 0
 		}),
-        client.zAdd(itemsByEndingAtKey(), { 
-            value: id,
-            score: attrs.endingAt.toMillis()
-        }),
+		client.zAdd(itemsByEndingAtKey(), {
+			value: id,
+			score: attrs.endingAt.toMillis()
+		}),
 		client.zAdd(itemsByPriceKey(), {
 			value: id,
 			score: 0
