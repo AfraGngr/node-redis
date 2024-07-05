@@ -5,9 +5,12 @@ export const usernamesUniqueKey = () => 'usernames:unique';
 export const userLikesKey = (userId: string) => `users:likes#${userId}`;
 export const userNamesKey = () => 'usernames';
 
+
+//ITEMS
 export const itemsKey = (itemId: string) => `items#${itemId}`;
 export const itemsByViewKey = () => `items:views`;
 export const itemsByEndingAtKey = () => `items:endingAt`;
 export const itemsViewsKey = (itemId: string) => `items:views#${itemId}`;
 export const bidHistoryKey = (itemId: string) => `history#${itemId}`;
 export const itemsByPriceKey = () => `items:price`;
+export const itemsIndexKey = () => `ìdx:items`;
