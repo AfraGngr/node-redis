@@ -19,7 +19,7 @@ export const createBid = async (attrs: CreateBidAttrs) => {
 
 		const serialized = serializeHistory(attrs.amount, attrs.createdAt.toMillis());
 
-		if(signal.expired) throw new Error('Lock expired');
+		if (signal.expired) throw new Error('Lock expired');
 
 		Promise.all([
 			client.rPush(bidHistoryKey(attrs.itemId), serialized),

@@ -26,19 +26,18 @@ export const withLock = async (key: string, cb: (signal: any) => any) => {
 		}
 
 		// If the set is successful, run the callback
-		try{
-			const signal = { expired: false}
+		try {
+			const signal = { expired: false };
 
 			setTimeout(() => {
-				signal.expired = true
-			}, 2000)
+				signal.expired = true;
+			}, 2000);
 			const result = await cb(signal);
 			return result;
-
-		} finally{
+		} finally {
 			// Unset the locked key
 			// await client.del(lockKey);
-			await client.unlock(lockKey, token)
+			await client.unlock(lockKey, token);
 		}
 	}
 };
